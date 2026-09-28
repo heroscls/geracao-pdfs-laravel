@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('fichas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('aluno_id')->constrained()->cascadeOnDelete();
+            $table->string('nome');
+            $table->string('instrutor');
+            $table->date('data_inicio');
+            $table->date('data_fim')->nullable();
+            $table->text('observacoes')->nullable();
             $table->timestamps();
         });
     }

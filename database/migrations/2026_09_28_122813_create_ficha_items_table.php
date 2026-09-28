@@ -11,8 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ficha_items', function (Blueprint $table) {
+        Schema::create('ficha_itens', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('ficha_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('exercicio_id')->constrained()->cascadeOnDelete();
+            $table->char('dia', 1);                       // A, B, C...
+            $table->unsignedTinyInteger('ordem')->default(1);
+            $table->unsignedTinyInteger('series');
+            $table->string('repeticoes');                 // "12" ou "8-10"
+            $table->string('carga')->nullable();          // "20kg"
+            $table->unsignedSmallInteger('descanso_segundos')->default(60);
             $table->timestamps();
         });
     }
