@@ -1,5 +1,7 @@
-use App\Http\Controllers\OrcamentoController;
+<?php
 
+use App\Http\Controllers\OrcamentoController;
+use Illuminate\Support\Facades\Route;
 // Tela com a lista de orçamentos
 Route::get('/orcamentos', [OrcamentoController::class, 'index'])->name('orcamentos.index');
 
