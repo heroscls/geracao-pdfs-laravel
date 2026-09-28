@@ -1,8 +1,8 @@
-<?php
+use App\Http\Controllers\OrcamentoController;
 
-use App\Http\Controllers\FichaController;
-use Illuminate\Support\Facades\Route;
+// Tela com a lista de orçamentos
+Route::get('/orcamentos', [OrcamentoController::class, 'index'])->name('orcamentos.index');
 
-Route::get('/', [FichaController::class, 'index'])->name('fichas.index');
-Route::get('/fichas/{ficha}/pdf', [FichaController::class, 'visualizar'])->name('fichas.pdf');
-Route::get('/fichas/{ficha}/pdf/baixar', [FichaController::class, 'baixar'])->name('fichas.baixar');
+// Gera o PDF. {orcamento} faz o Laravel buscar o registro pelo ID sozinho.
+// Se o ID não existir, ele retorna 404 automaticamente (route model binding).
+Route::get('/orcamentos/{orcamento}/pdf', [OrcamentoController::class, 'pdf'])->name('orcamentos.pdf');
